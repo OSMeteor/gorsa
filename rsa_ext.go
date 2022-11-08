@@ -7,7 +7,6 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"errors"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"math/big"
@@ -26,13 +25,11 @@ var (
 // 设置公钥
 func getPubKey(publickey []byte) (*rsa.PublicKey, error) {
 	// decode public key
-	fmt.Println("pubInterface---", string(publickey))
 	block, _ := pem.Decode(publickey)
 	if block == nil {
 		return nil, errors.New("get public key error")
 	}
 	pubInterface, err := x509.ParseCertificate(block.Bytes)
-	fmt.Println("pubInterface---", pubInterface, err)
 	if err == nil {
 		pub := pubInterface.PublicKey
 		return pub.(*rsa.PublicKey), err
