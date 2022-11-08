@@ -8,7 +8,10 @@ import (
 func PublicEncrypt(data, publicKey string) (string, error) {
 
 	grsa := RSASecurity{}
-	grsa.SetPublicKey(publicKey)
+	err := grsa.SetPublicKey(publicKey)
+	if err != nil {
+		return "", err
+	}
 
 	rsadata, err := grsa.PubKeyENCTYPT([]byte(data))
 	if err != nil {

@@ -29,6 +29,13 @@ func getPubKey(publickey []byte) (*rsa.PublicKey, error) {
 	if block == nil {
 		return nil, errors.New("get public key error")
 	}
+	// pubInterface, err := x509.ParseCertificate(block.Bytes)
+	// fmt.Println("pubInterface---", pubInterface, err)
+	// if err == nil {
+	// 	pub := pubInterface.PublicKey
+	// 	return pub.(*rsa.PublicKey), err
+	// }
+
 	// x509 parse public key
 	pub, err := x509.ParsePKIXPublicKey(block.Bytes)
 	if err != nil {
@@ -36,6 +43,7 @@ func getPubKey(publickey []byte) (*rsa.PublicKey, error) {
 		if err != nil {
 			return nil, err
 		}
+
 	}
 	return pub.(*rsa.PublicKey), err
 }
