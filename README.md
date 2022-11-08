@@ -27,20 +27,12 @@ import (
 
 	"github.com/OSMeteor/gorsa"
 )
-
-func ReadSslFileToStr(path string) (string, error) {
-	buf, err := ioutil.ReadFile(path)
-	if err != nil {
-		return "", err
-	}
-	return string(buf), nil
-}
 func main() {
-	Pubkey, publicKeyErr := ReadSslFileToStr("/Users/osmeteor/go/src/partnerPortalBackendApi/conf/PartnerServerSsl/KeyroadsPatner_server.crt")
+	Pubkey, publicKeyErr := gorsa.ReadSslFileToStr("server.crt")
 	if publicKeyErr != nil {
 		fmt.Println("---->", publicKeyErr)
 	}
-	Pirvatekey, privateKeyErr := ReadSslFileToStr("/Users/osmeteor/go/src/partnerPortalBackendApi/conf/PartnerServerSsl/KeyroadsPatner_server.key")
+	Pirvatekey, privateKeyErr := gorsa.ReadSslFileToStr("server.key")
 	if privateKeyErr != nil {
 		fmt.Println("----1>", privateKeyErr)
 	}
