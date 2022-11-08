@@ -1,6 +1,6 @@
 # GoRSA Encryption library
 
-based on https://github.com/farmerx/gorsa Optimized the following points for packaging:
+based on https://github.com/wenzhenxi/gorsa Optimized the following points for packaging:
 
 - Optimization of public and private keys requires registration and initialization in advance.
 - The encryption machine does not perform base64 processing, and avoids secondary encapsulation of base64 during cross-program transfer or storage
@@ -10,7 +10,7 @@ based on https://github.com/farmerx/gorsa Optimized the following points for pac
 Get expansion pack:
 
 ```
-go get github.com/wenzhenxi/gorsa
+go get github.com/OSMeteor/gorsa
 ```
 
 Specific use:
@@ -22,7 +22,7 @@ package main
 import (
 	"log"
 	"errors"
-	"github.com/wenzhenxi/gorsa"
+	"github.com/OSMeteor/gorsa"
 )
 
 var Pubkey = `-----BEGIN Public key-----
