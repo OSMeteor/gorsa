@@ -22,6 +22,14 @@ var (
 	ErrPrivateKey      = errors.New("get private key error")
 )
 
+func ReadSslFileToStr(path string) (string, error) {
+	buf, err := ioutil.ReadFile(path)
+	if err != nil {
+		return "", err
+	}
+	return string(buf), nil
+}
+
 // 设置公钥
 func getPubKey(publickey []byte) (*rsa.PublicKey, error) {
 	// decode public key
